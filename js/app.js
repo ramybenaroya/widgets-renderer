@@ -19,7 +19,6 @@
 // This file bootstraps the entire application.
 // Empty for now!
 
-var EditEnabler = require('./components/EditEnabler');
 var Renderer = require('./components/Renderer');
 var LocalStorageFixtures = require('./services/LocalStorageFixtures');
 var RendererWebAPI = require('./services/RendererWebAPI');
@@ -29,10 +28,6 @@ LocalStorageFixtures.init();
 
 RendererWebAPI.getData();
 
-// React.render(
-//   <EditEnabler />,
-//   document.getElementById('insite-outsite-edit-enabler')
-// );
 
 React.render(
   <Renderer />,
