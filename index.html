@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Inside Outside Inline Editor</title>
+  </head>
+  <style>
+  	* {
+  		rect-sizing: border-rect;
+  	}
+	#site {
+		border: 3px solid black;
+		width: 960px;
+		height: 500px;
+		overflow: scroll;
+	}
+	.rect {
+		height: 50px;
+		width: 100%;
+		border: 1px solid gray;
+	}
+
+	.placeholder {
+		background-color: white;
+	}
+
+	#rect1 {
+		background-color: olive;
+	}
+
+	#rect2 {
+		background-color: magenta;
+	}
+
+	#rect3 {
+		background-color: blue;
+	}
+
+	#rect4 {
+		background-color: red;
+	}
+
+	#rect5 {
+		background-color: yellow;
+	}
+
+	#rect6 {
+		background-color: cyan;
+	}
+
+	#rect7 {
+		background-color: lightyellow;
+	}
+
+	#rect8 {
+		background-color: orange;
+	}
+  </style>
+  <body>
+	<div id="insite-outsite-container-renderer"></div>
+    <div id="insite-outsite-edit-enabler"></div>
+    <div id="insite-outsite-widget-editor"></div>
+
+
+
+    <div id="site">
+		<div id="rect1" class='rect'>
+		</div>
+		<div id="rect2" class='rect'>
+		</div>
+		<div id="rect3" class='rect'>
+		</div>
+		<div id="rect4" class='rect'>
+		</div>
+		<div id="rect5" class='rect'>
+		</div>
+		<div id="rect6" class='rect'>
+		</div>
+		<div id="rect7" class='rect'>
+		</div>
+		<div id="rect8" class='rect'>
+		</div>
+    </div>
+
+    
+    <script src="js/bundle.js"></script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+module.exports = {
+	init: function() {
+		localStorage.clear();
+		this.initializers.forEach(function(initializer) {
+			initializer();
+		});
+	},
+	initializers: [
+		function initRendererData() {
+			localStorage.setItem('rendererData', JSON.stringify({
+				parentSelector: '#site',
+				beforeSelector: '#rect3'
+			}));
+		},
+		function initMainContainerData() {
+			localStorage.setItem('mainContainerData', JSON.stringify({
+				type: 'main-container',
+				props: {
+					style: 'border: 5px solid black;',
+					version: 1,
+					nestedWidgets: [{
+						type: 'text',
+						props: {
+							version: 1,
+							id: '100',
+							content: 'This <strong>is</strong> text',
+							style: 'border: 5px solid green;',
+						}
+					}, {
+
+						type: 'image',
+						props: {
+							version: 1,
+							id: '200',
+							src: 'http://www.hdwallpapersimages.com/wp-content/uploads/2014/01/Winter-Tiger-Wild-Cat-Images.jpg',
+							style: 'border: 5px solid red; height:200px'
+						},
+
+					}]
+				}
+			}));
+		}
+
+	]
+}
