@@ -21,7 +21,7 @@ module.exports = {
 			fontSize: '20px'
 		};
 		return (
-			<div style={style}>
+			<div className='inline-edit-wrapper' style={style}>
 				EDIT
 			</div>
 		);
