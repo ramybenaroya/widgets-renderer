@@ -1,12 +1,35 @@
 var React = require('react');
-var StyleMapper = require('../../utils/StyleMapper');
+var assign = require('object-assign');
 
 module.exports = {
-	parseStyle: function(){
-		return StyleMapper.fromInlineStyleToObject(this.props.style);
+	getStyle: function(){
+		var style = assign({}, this.props.style, {
+			position: 'relative'
+		});
+		return style;
 	},
 	_renderDefault: function(){
 		return (<div id={this.props.id}></div>);
+	},
+	_renderInlineEdit: function(){
+		var style = {
+			position: 'absolute',
+			top: '5px',
+			left: '5px',
+			color: 'red',
+			textStyle: 'bold',
+			fontSize: '20px'
+		};
+		return (
+			<div style={style}>
+				EDIT
+			</div>
+		);
+	},
+	getInitialState: function(){
+		return {
+			editMode: true
+		};
 	},
 	_getRendererNameByVersion: function(version){
 		return '_renderVersion' + version;
@@ -16,11 +39,24 @@ module.exports = {
 	},
 	render: function(){
 		var version = this.props.version,
-			rendererName = this._getRendererNameByVersion(version);
+			rendererName = this._getRendererNameByVersion(version),
+			id = this.getElementId(),
+			style = this.getStyle(this.props.style),
+			inlineEditMarkup,
+			markup;
 		if (this[rendererName]){
-			return this[rendererName]();
+			markup = this[rendererName]();
 		} else {
-			return this._renderDefault();
+			markup = this._renderDefault();
 		}
+		if (this.state.editMode){
+			inlineEditMarkup = this._renderInlineEdit();
+		}
+		return (
+			<div id={id} style={style}>
+				{markup}
+				{inlineEditMarkup}
+			</div>
+		);
 	}
 }

@@ -35,14 +35,14 @@ var RenderedContainer = React.createClass({
 
 			id = this.getElementId(),
 
-			style = this.parseStyle(this.props.style);
+			style = this.getStyle(this.props.style);
 
 		return (
 			<div>
 				<style type="text/css">
 					{css}		
 				</style>
-				<div id={id} style={style} className="inout-main-container">
+				<div className="inout-main-container">
 					{nestedComponents}
 				</div>
 			</div>

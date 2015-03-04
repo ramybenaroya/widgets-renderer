@@ -18,7 +18,10 @@ module.exports = {
 
 				props: {
 					id: '1000',
-					style: 'border: 5px solid black;',
+					style: {
+						border: '5px solid black',
+						padding: '40px'
+					},
 					css:`
 						#{widgetSelector} img {
 							height: 200px;
@@ -34,9 +37,16 @@ module.exports = {
 						props: {
 							version: 1,
 							id: '100',
-							css: '',
+							css: `
+								{#widgetSelector} p {
+									margin: 0;
+									padding: 20px
+								}
+							`,
 							content: 'This <strong>is</strong> text',
-							style: 'border: 5px solid green;',
+							style: {
+								border: '5px solid green;'
+							}
 						}
 					}, {
 
@@ -46,7 +56,9 @@ module.exports = {
 							id: '200',
 							css: '',
 							src: 'http://www.hdwallpapersimages.com/wp-content/uploads/2014/01/Winter-Tiger-Wild-Cat-Images.jpg',
-							style: 'border: 5px solid red;'
+							style: {
+								border: '5px solid red;'
+							}
 						},
 
 					}]

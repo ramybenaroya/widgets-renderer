@@ -12,10 +12,8 @@ var RenderedText = React.createClass({
 	},
 
 	_renderVersion1: function() {
-		var style = this.parseStyle(this.props.style),
-			id = this.getElementId();
 		return (
-			<p id={id} style={style} dangerouslySetInnerHTML={{__html: this.props.content}}>
+			<p dangerouslySetInnerHTML={{__html: this.props.content}}>
 			</p>
 		);
 	}
