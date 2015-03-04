@@ -21,13 +21,11 @@
 
 var Renderer = require('./components/Renderer');
 var LocalStorageFixtures = require('./services/LocalStorageFixtures');
-var RendererWebAPI = require('./services/RendererWebAPI');
 var React = require('react');
+var RendererViewActionCreators = require('./actions/RendererViewActionCreators');
 
 LocalStorageFixtures.init();
-
-RendererWebAPI.getData();
-
+RendererViewActionCreators.requestRendererData();
 
 React.render(
   <Renderer />,

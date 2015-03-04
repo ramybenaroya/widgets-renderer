@@ -6,10 +6,13 @@ module.exports = {
 		return StyleMapper.fromInlineStyleToObject(this.props.style);
 	},
 	_renderDefault: function(){
-		return (<div></div>);
+		return (<div id={this.props.id}></div>);
 	},
 	_getRendererNameByVersion: function(version){
 		return '_renderVersion' + version;
+	},
+	getElementId: function(){
+		return 'inout_element_' + this.props.id;
 	},
 	render: function(){
 		var version = this.props.version,

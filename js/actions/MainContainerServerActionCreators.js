@@ -1,10 +1,11 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
+var ActionTypes = require('../constants/AppConsts').ActionTypes;
 
 module.exports = {
 
 	receiveMainContainerData: function(payload) {
 		AppDispatcher.handleServerAction({
-		  type: "RECEIVE_MAIN_CONTAINER_DATA",
+		  type: ActionTypes.RECEIVE_MAIN_CONTAINER_DATA,
 		  mainContainerData: payload
 		});
 	}

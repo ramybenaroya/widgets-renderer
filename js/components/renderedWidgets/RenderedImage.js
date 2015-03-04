@@ -12,10 +12,10 @@ var RenderedImage = React.createClass({
 	},
 
 	_renderVersion1: function() {
-		debugger;
-		var style = this.parseStyle(this.props.style);
+		var style = this.parseStyle(this.props.style),
+			id = this.getElementId();
 		return (
-			<img style={style} src={this.props.src}/>
+			<img id={id} style={style} src={this.props.src}/>
 		);
 	}
 

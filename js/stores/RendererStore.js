@@ -1,7 +1,8 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var MainContainerServerActionCreators = require('../actions/MainContainerServerActionCreators');
-var _ = require('lodash');
+var assign = require('object-assign');
+var ActionTypes = require('../constants/AppConsts').ActionTypes;
 
 var CHANGE_EVENT = 'change';
 
@@ -14,7 +15,8 @@ var RendererStoreUtil = {
 };
 
 
-var RendererStore = _.extend({}, EventEmitter.prototype, {
+var RendererStore = assign(
+	{}, EventEmitter.prototype, {
 
 	emitChange: function() {
 		this.emit(CHANGE_EVENT);
@@ -38,7 +40,7 @@ RendererStore.dispatchToken = AppDispatcher.register(function(payload) {
 
 	switch (action.type) {
 
-		case "RECEIVE_RENDERER_DATA":
+		case ActionTypes.RECEIVE_RENDERER_DATA:
 			RendererStoreUtil.setData(action.rendererData);
 			RendererStore.emitChange();
 			break;

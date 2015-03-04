@@ -2,9 +2,9 @@ var RendererServerActionCreators = require('../actions/RendererServerActionCreat
 
 module.exports = {
 
-  getData: function() {
-    var rendererData = JSON.parse(localStorage.getItem('rendererData'));
-    RendererServerActionCreators.receiveRendererData(rendererData);
-  }
+	getData: function() {
+		var rendererData = JSON.parse(localStorage.getItem('rendererData'));
+		RendererServerActionCreators.receiveRendererData(rendererData);
+	}
 
 };

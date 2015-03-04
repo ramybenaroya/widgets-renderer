@@ -1,7 +1,7 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
-var _ = require('lodash');
-var MainContainerWebAPI = require('../services/MainContainerWebAPI');
+var assign = require('object-assign');
+var ActionTypes = require('../constants/AppConsts').ActionTypes;
 
 var CHANGE_EVENT = 'change';
 
@@ -14,7 +14,7 @@ var MainContainerStoreUtil = {
 };
 
 
-var MainContainerStore = _.extend({}, EventEmitter.prototype, {
+var MainContainerStore = assign({}, EventEmitter.prototype, {
 
 	emitChange: function() {
 		this.emit(CHANGE_EVENT);
@@ -38,13 +38,11 @@ MainContainerStore.dispatchToken = AppDispatcher.register(function(payload) {
 
 	switch (action.type) {
 
-		case "RECEIVE_MAIN_CONTAINER_DATA":
+		case ActionTypes.RECEIVE_MAIN_CONTAINER_DATA:
 			MainContainerStoreUtil.setMainContainerData(action.mainContainerData);
 			MainContainerStore.emitChange();
 			break;
 
-		case "REQUEST_MAIN_CONTAINER_DATA": 
-			setTimeout(MainContainerWebAPI.getData.bind(MainContainerWebAPI), 0);
 		default:
 			// do nothing
 	}

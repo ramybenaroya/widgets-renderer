@@ -3,7 +3,8 @@ var React = require('react');
 var WidgetsMapper = require('../../services/WidgetsMapper');
 var MainContainerStore = require('../../stores/MainContainerStore');
 var RenderedWidgetMixin = require('./RenderedWidgetMixin');
-var _ = require('lodash');
+var assign = require('object-assign');
+var reduce = require('array-reduce')
 
 var RenderedContainer = React.createClass({
 	mixins: [RenderedWidgetMixin],
@@ -17,17 +18,35 @@ var RenderedContainer = React.createClass({
 
 	_renderVersion1: function() {
 		var nestedWidgetsModels = this.props.nestedWidgets || [],
-			nestedComponents = nestedWidgetsModels.map(function(item){
-				var ComponentClass = WidgetsMapper.getRenderedWidgetComponent(item.type),
-					componentProps = _.extend({key: item.props.id}, item.props);
+
+			nestedComponents = nestedWidgetsModels.map(function(widgetModel){
+				var ComponentClass = WidgetsMapper.getRenderedWidgetComponent(widgetModel.type),
+					componentProps = assign({key: widgetModel.props.id}, widgetModel.props);
 				
 				return React.createElement(ComponentClass, componentProps);
 			}),
+
+			idGetter = this.getElementId,
+
+			css = reduce([this].concat(nestedComponents), function(accumulator, component){
+				var elementId = idGetter.apply(component);
+				return accumulator + component.props.css.replace(/\{\{widgetSelector\}\}/g, '#' + elementId);
+			}, ''),
+
+			id = this.getElementId(),
+
 			style = this.parseStyle(this.props.style);
+
 		return (
-			<div style={style} classNames="io-main-container">
-				{nestedComponents}
+			<div>
+				<style type="text/css">
+					{css}		
+				</style>
+				<div id={id} style={style} className="inout-main-container">
+					{nestedComponents}
+				</div>
 			</div>
+			
 		);
 	},
 	_onChange: function(){

@@ -18,9 +18,9 @@
 
 var Dispatcher = require('flux/lib/Dispatcher');
 
-var _ = require('lodash');
+var assign = require('object-assign');
 
-var AppDispatcher = _.extend(new Dispatcher(), {
+var AppDispatcher = assign(new Dispatcher(), {
 
   /**
    * @param {object} action The details of the action, including the action's

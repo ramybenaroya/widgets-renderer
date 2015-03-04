@@ -1,9 +1,9 @@
 var $ = require('jquery');
 var EventEmitter = require('events').EventEmitter;
-var _ = require('lodash');
+var assign = require('object-assign');
 
 
-module.exports = _.extend({}, EventEmitter.prototype, {
+module.exports = assign({}, EventEmitter.prototype, {
 	init: function(){
 		var siteInteractions = this;
 		$(function(){

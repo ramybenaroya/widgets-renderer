@@ -15,14 +15,26 @@ module.exports = {
 		function initMainContainerData() {
 			localStorage.setItem('mainContainerData', JSON.stringify({
 				type: 'main-container',
+
 				props: {
+					id: '1000',
 					style: 'border: 5px solid black;',
+					css:`
+						{{widgetSelector}} img {
+							height: 200px;
+						}
+
+						{{widgetSelector}} p {
+							background-color: green;
+						}
+					`,
 					version: 1,
 					nestedWidgets: [{
 						type: 'text',
 						props: {
 							version: 1,
 							id: '100',
+							css: '',
 							content: 'This <strong>is</strong> text',
 							style: 'border: 5px solid green;',
 						}
@@ -32,8 +44,9 @@ module.exports = {
 						props: {
 							version: 1,
 							id: '200',
+							css: '',
 							src: 'http://www.hdwallpapersimages.com/wp-content/uploads/2014/01/Winter-Tiger-Wild-Cat-Images.jpg',
-							style: 'border: 5px solid red; height:200px'
+							style: 'border: 5px solid red;'
 						},
 
 					}]
