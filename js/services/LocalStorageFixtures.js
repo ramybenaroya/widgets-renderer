@@ -23,11 +23,11 @@ module.exports = {
 						padding: '40px'
 					},
 					css:`
-						#{widgetSelector} img {
+						{widgetSelector} img {
 							height: 200px;
 						}
 
-						#{widgetSelector} p {
+						{widgetSelector} p {
 							background-color: green;
 						}
 					`,
@@ -38,7 +38,7 @@ module.exports = {
 							version: 1,
 							id: '100',
 							css: `
-								{#widgetSelector} p {
+								{widgetSelector} p {
 									margin: 0;
 									padding: 20px
 								}

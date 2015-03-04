@@ -30,7 +30,7 @@ var RenderedContainer = React.createClass({
 
 			css = reduce([this].concat(nestedComponents), function(accumulator, component){
 				var elementId = idGetter.apply(component);
-				return accumulator + component.props.css.replace(/\{#widgetSelector\}/g, '#' + elementId);
+				return accumulator + component.props.css.replace(/\{widgetSelector\}/g, '#' + elementId);
 			}, ''),
 
 			id = this.getElementId(),
