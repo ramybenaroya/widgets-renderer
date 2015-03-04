@@ -20,11 +20,11 @@ module.exports = {
 					id: '1000',
 					style: 'border: 5px solid black;',
 					css:`
-						{{widgetSelector}} img {
+						#{widgetSelector} img {
 							height: 200px;
 						}
 
-						{{widgetSelector}} p {
+						#{widgetSelector} p {
 							background-color: green;
 						}
 					`,
