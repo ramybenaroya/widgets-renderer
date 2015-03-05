@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
 	actions: {
 		startCrossFrameCommunication: function(frameWindow){
 			var crosser = new Crosser(frameWindow, 'http://localhost:3000');
-			crosser.subscribeSession('SESSION_A', this.forSessionA.bind(this));
+			crosser.subscribe('SESSION_A', this.forSessionA.bind(this));
 			this.set('crosser', crosser);
 		},
 		stopCrossFrameCommunication: function(){
@@ -17,7 +17,6 @@ export default Ember.Controller.extend({
 	forSessionA: function(payload){
 		alert(payload.message);
 		return new Promise(function(resolve, reject){
-			debugger;
 			setTimeout(function(){
 				resolve({
 					message: 'from parent'		

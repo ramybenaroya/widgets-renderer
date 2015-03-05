@@ -8,7 +8,7 @@ module.exports = {
 	getData: function() {
 		var rendererData = JSON.parse(localStorage.getItem('rendererData'));
 		RendererServerActionCreators.receiveRendererData(rendererData);
-		crosser.startSession('SESSION_A', {message: 'message from child'})
+		crosser.trigger('SESSION_A', {message: 'message from child'})
 			.then(function(payload){
 				alert(payload.message)
 			});
