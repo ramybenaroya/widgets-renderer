@@ -23,8 +23,11 @@ var Renderer = require('./components/Renderer');
 var LocalStorageFixtures = require('./services/LocalStorageFixtures');
 var React = require('react');
 var RendererViewActionCreators = require('./actions/RendererViewActionCreators');
+var CrossFrameSessionCreator = require('cross-frame-session-creator');
 
 LocalStorageFixtures.init();
+CrossFrameSessionCreator.start(window.parent, 'http://localhost:4200');
+
 RendererViewActionCreators.requestRendererData();
 
 React.render(
