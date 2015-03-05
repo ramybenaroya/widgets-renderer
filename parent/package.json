@@ -37,7 +37,7 @@
     "glob": "^4.0.5"
   },
   "dependencies": {
-    "cross-frame-session-creator": "0.0.1",
+    "crosser": "0.0.4",
     "object-assign": "^2.0.0",
     "postie": "^1.0.0"
   }

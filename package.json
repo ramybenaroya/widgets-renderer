@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "array-reduce": "0.0.0",
-    "cross-frame-session-creator": "0.0.1",
+    "crosser": "0.0.4",
     "flux": "^2.0.1",
     "jquery": "^2.1.3",
     "keymirror": "^0.1.1",

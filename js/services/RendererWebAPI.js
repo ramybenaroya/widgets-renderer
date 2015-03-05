@@ -1,15 +1,17 @@
 var RendererServerActionCreators = require('../actions/RendererServerActionCreators');
-var CrossFrameSessionCreator = require('cross-frame-session-creator');
+var Crosser = require('crosser');
+
+var crosser = new Crosser(window.parent, 'http://localhost:4200');
 
 module.exports = {
 
 	getData: function() {
 		var rendererData = JSON.parse(localStorage.getItem('rendererData'));
 		RendererServerActionCreators.receiveRendererData(rendererData);
-		CrossFrameSessionCreator.create('SESSION_A', {message: 'message from child'})
+		crosser.startSession('SESSION_A', {message: 'message from child'})
 			.then(function(payload){
 				alert(payload.message)
-			})
+			});
 	}
 
 };
